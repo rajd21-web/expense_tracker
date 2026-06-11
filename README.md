@@ -1,8 +1,8 @@
 # Expense Tracker
 
-Expense tracker in Python Flask supports following actions
+Expense tracker in Python Flask supports the following actions:
 
-- Login/Signup
+- Login / Signup
 - Add statement
 - Delete statement
 - Calculate final amount
@@ -10,42 +10,41 @@ Expense tracker in Python Flask supports following actions
 - Admin functionality
 - Download all statements
 
-## Run the project
+## Run the Project
 
-> You must have python3 installed on your system before running
+> Python 3.10.2 was used for this project.
 
-> used python 3.10.2 for this project
-
-### Create virtual environment and activate it
+### Create Virtual Environment
 
 ```bash
-# bash
-$ python3 -m venv env
+# Linux/Mac
+python3 -m venv env
 
-# windows
-> python -m venv env
-> env\Scripts\activate
+# Windows
+python -m venv env
+env\Scripts\activate
 ```
 
-### Install requirements
+### Install Requirements
 
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-### Set secret key and database URI
+### Set Environment Variables
 
 ```bash
-# bash
-(env) $ export DB_URI="database uri"
-(env) $ export SECRET_KEY="secret key"
+# Linux/Mac
+export DB_URI="database_uri"
+export SECRET_KEY="secret_key"
 
-# windows
-(env) > SET DB_URI=database_uri
-(env) > SET SECRET_KEY=secret_key
+# Windows
+SET DB_URI=database_uri
+SET SECRET_KEY=secret_key
 ```
 
-### final run
+### Run
+
 ```bash
-$ flask run
+flask run
 ```
