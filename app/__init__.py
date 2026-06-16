@@ -34,6 +34,8 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
+    with app.app_context():
+        db.create_all()
 
     @app.after_request
     def after_request_(response):
@@ -49,23 +51,23 @@ def create_app():
     blueprints = [auth, home, settings, admin ]
 
     # request.blueprint != admin.name and 
-    @app.before_request
-    def app_before_data():
-        if request.endpoint != "static":
-            user_agent = parse(request.user_agent.string)
-            browser = user_agent.browser.family
-            device = user_agent.get_device()
-            operating_system = user_agent.get_os()
-            bot = user_agent.is_bot
+    #@app.before_request
+    #def app_before_data():
+        #if request.endpoint != "static":
+           # user_agent = parse(request.user_agent.string)
+            #browser = user_agent.browser.family
+            #device = user_agent.get_device()
+           # operating_system = user_agent.get_os()
+           # bot = user_agent.is_bot
 
-            stat = VisitorStats(
-                browser = browser,
-                device = device,
-                operating_system = operating_system,
-                is_bot = bot
-            )
-            db.session.add(stat)
-            db.session.commit()
+           # stat = VisitorStats(
+              #  browser = browser,
+             #   device = device,
+              #  operating_system = operating_system,
+              #  is_bot = bot
+          #  )
+           # db.session.add(stat)
+          #  db.session.commit()
 
     for bp in blueprints: app.register_blueprint(bp)
 
