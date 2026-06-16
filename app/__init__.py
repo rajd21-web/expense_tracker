@@ -13,7 +13,12 @@ def create_app():
     app = Flask(__name__)
 
     app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "NOTHING_IS_SECRET")
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URI", "sqlite:///master.sqlite3")
+    db_uri = os.environ.get("DB_URI", "sqlite:///master.sqlite3")
+
+if db_uri.startswith("mysql://"):
+    db_uri = db_uri.replace("mysql://", "mysql+pymysql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     app.config["PERMANENT_SESSION_LIFETIME"] = datetime.timedelta(days=7)
 
     db.init_app(app)
