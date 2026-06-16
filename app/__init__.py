@@ -20,6 +20,7 @@ def create_app():
             "mysql+pymysql://",
             1
         )
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     app.config["PERMANENT_SESSION_LIFETIME"] = datetime.timedelta(days=7)
 
     db.init_app(app)
