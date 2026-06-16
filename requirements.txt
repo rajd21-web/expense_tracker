@@ -18,3 +18,5 @@ ua-parser==0.16.1
 Werkzeug==2.2.3
 itsdangerous==2.1.2
 gunicorn==23.0.0
+numpy==1.26.4
+matplotlib==3.8.4
